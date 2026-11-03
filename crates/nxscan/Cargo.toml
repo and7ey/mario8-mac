@@ -1,0 +1,10 @@
+[package]
+name = "nxscan"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1.0.104"
+nxfs = { version = "0.1.0", path = "../nxfs" }
+yaxpeax-arch = "0.3.2"
+yaxpeax-arm = "0.5.0"

@@ -1,0 +1,14 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/nxabi",
+    "crates/nxfs",
+    "crates/nxhost",
+    "crates/nxpatch",
+    "crates/nxscan",
+    "crates/nxshader",
+]
+exclude = ["crates/nxandroid"]
+
+[profile.release]
+debug = 1

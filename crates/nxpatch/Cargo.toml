@@ -1,0 +1,13 @@
+[package]
+name = "nxpatch"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1.0.104"
+capstone = "0.14.0"
+clap = { version = "4.6.7", features = ["derive"] }
+hex = "0.4.3"
+nxabi = { version = "0.1.0", path = "../nxabi" }
+nxfs = { version = "0.1.0", path = "../nxfs" }
+unicorn-engine = "2.1.5"

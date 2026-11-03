@@ -1,0 +1,60 @@
+[package]
+name = "nxhost"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+name = "nxhost"
+crate-type = ["rlib", "cdylib"]
+
+[[bin]]
+name = "nxhost"
+path = "src/main.rs"
+
+[dependencies]
+bcdec_rs = "0.2.0"
+anyhow = "1.0.104"
+clap = { version = "4.6.7", features = ["derive"] }
+libc = "0.2.190"
+nxabi = { version = "0.1.0", path = "../nxabi" }
+nxfs = { version = "0.1.0", path = "../nxfs" }
+nxshader = { version = "0.1.0", path = "../nxshader" }
+
+[target.'cfg(any(target_os = "macos", target_os = "ios"))'.dependencies]
+block2 = "0.6.2"
+dispatch2 = "0.3.1"
+mp4 = "0.14.0"
+objc2 = "0.6.5"
+objc2-audio-toolbox = "0.3.2"
+objc2-av-foundation = { version = "0.3.2", features = ["objc2-core-media", "objc2-core-video"] }
+objc2-core-audio-types = "0.3.2"
+objc2-core-foundation = "0.3.2"
+objc2-core-media = "0.3.2"
+objc2-core-video = "0.3.2"
+objc2-foundation = "0.3.2"
+objc2-core-haptics = { version = "0.3.2", default-features = false, features = ["std", "CHHapticDeviceCapability", "CHHapticEngine", "CHHapticEvent", "CHHapticParameter", "CHHapticPattern", "CHHapticPatternPlayer"] }
+objc2-game-controller = "0.3.2"
+objc2-metal = "0.3.2"
+objc2-quartz-core = "0.3.2"
+bcdec_rs = "0.2.0"
+image-webp = "0.2.4"
+png = "0.18.1"
+
+[target.'cfg(target_os = "macos")'.dependencies]
+objc2-app-kit = "0.3.2"
+
+[target.'cfg(target_os = "ios")'.dependencies]
+objc2-ui-kit = "0.3.2"
+objc2-core-motion = "0.3.2"
+
+[target.'cfg(target_os = "android")'.dependencies]
+android_logger = "0.14"
+ash = "0.38"
+image-webp = "0.2.4"
+jni = "0.21"
+log = "0.4"
+mp4 = "0.14.0"
+ndk-sys = "0.6"
+
+[build-dependencies]
+nxfs = { version = "0.1.0", path = "../nxfs" }
