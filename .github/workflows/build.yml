@@ -1,0 +1,37 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  macos:
+    runs-on: macos-14
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Runner info
+        run: uname -m && sw_vers
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - name: Add Apple Silicon target
+        run: rustup target add aarch64-apple-darwin
+
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Build
+        run: cargo build --release --target aarch64-apple-darwin
+
+      - name: Check binary
+        run: file target/aarch64-apple-darwin/release/nxhost
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nxhost-macos-arm64
+          path: target/aarch64-apple-darwin/release/nxhost
+          if-no-files-found: error
